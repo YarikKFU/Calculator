@@ -19,5 +19,17 @@ class MainActivity : AppCompatActivity() {
         btn_7.setOnClickListener { CalcHelper(this).addDigit("7") }
         btn_8.setOnClickListener { CalcHelper(this).addDigit("8") }
         btn_9.setOnClickListener { CalcHelper(this).addDigit("9") }
+
+        dot_btn.setOnClickListener { CalcHelper(this).addDigit(".") }
+        minus_btn.setOnClickListener { CalcHelper(this).addDigit("-") }
+        plus_btn.setOnClickListener { CalcHelper(this).addDigit("+") }
+        mult_btn.setOnClickListener { CalcHelper(this).addDigit("*") }
+        division_btn.setOnClickListener { CalcHelper(this).addDigit("/") }
+
+        sqrt_btn.setOnClickListener { CalcHelper(this).sqrt() }
+        clear_btn.setOnClickListener { CalcHelper(this).clear() }
+        invert_btn.setOnClickListener { CalcHelper(this).invert() }
+        delete_btn.setOnClickListener { CalcHelper(this).delete() }
+
     }
 }
