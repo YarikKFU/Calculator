@@ -64,4 +64,51 @@ class CalcHelper(
             }
         }
     }
+
+    fun res() {
+        if (context is MainActivity)
+            for (char in context.math_operation.text.indices - 0)
+                when {
+                    context.math_operation.text[char] == '-' -> {
+                        if (context.math_operation.text[0] != '-') {
+                            val first = context.math_operation.text.toString().substringBefore('-')
+                            val second = context.math_operation.text.toString().substringAfter('-')
+                            calculate(first.toDouble(), second.toDouble(), "minus")
+                        } else {
+                            val first = context.math_operation.text.toString().substringAfter('-')
+                                .substringBefore('-')
+                            val second = context.math_operation.text.toString().substringAfter('-')
+                                .substringAfter('-')
+                            calculate("-$first".toDouble(), second.toDouble(),"minus")
+                        }
+                    }
+                    context.math_operation.text[char] == '+' -> {
+                        val first = context.math_operation.text.toString().substringBefore('+')
+                        val second = context.math_operation.text.toString().substringAfter('+')
+                        calculate(first.toDouble(), second.toDouble(), "plus")
+                    }
+                    context.math_operation.text[char] == '*' -> {
+                        val first = context.math_operation.text.toString().substringBefore('*')
+                        val second = context.math_operation.text.toString().substringAfter('*')
+                        calculate(first.toDouble(), second.toDouble(), "mult")
+                    }
+                    context.math_operation.text[char] == '/' -> {
+                        val first = context.math_operation.text.toString().substringBefore('/')
+                        val second = context.math_operation.text.toString().substringAfter('/')
+                        calculate(first.toDouble(), second.toDouble(), "div")
+                    }
+                }
+    }
+
+    private fun calculate(num1: Double, num2: Double, operation: String) {
+        if (context is MainActivity) {
+
+            when (operation) {
+                "minus" -> context.result_text.text = (num1 - num2).toString()
+                "plus" -> context.result_text.text = (num1 + num2).toString()
+                "mult" -> context.result_text.text = (num1 * num2).toString()
+                "div" -> context.result_text.text = (num1 / num2).toString()
+            }
+        }
+    }
 }

@@ -31,5 +31,6 @@ class MainActivity : AppCompatActivity() {
         invert_btn.setOnClickListener { CalcHelper(this).invert() }
         delete_btn.setOnClickListener { CalcHelper(this).delete() }
 
+        equal_btn.setOnClickListener { CalcHelper(this).res() }
     }
 }
